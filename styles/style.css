@@ -56,3 +56,69 @@ body {
 .section__button:focus-visible {
   outline-color: yellow;
 }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 30px;
+  overflow-y: auto;
+  display: none;
+}
+
+.modal__main {
+  position: relative;
+  max-width: 700px;
+  background-color: #fff;
+  margin: auto;
+  color: #000;
+  border-radius: 16px;
+  padding: 30px 60px 60px;
+  cursor: default;
+}
+
+.modal__title {
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+
+.modal__container {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.modal__btn {
+  background-color: red;
+  color: #fff;
+  font-size: 26px;
+  text-align: center;
+  display: block;
+  margin: 0 auto; 
+  border-radius: 20px;
+  border: none;
+  padding: 15px 30px;
+}
+
+.modal__close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  transition: outline-color .15s ease-in-out;
+  border-radius: 3px;
+  padding: 0;
+  text-align: center;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.modal__close:focus-visible {
+  outline-color: green;
+}
