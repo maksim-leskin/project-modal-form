@@ -26,10 +26,13 @@ a {
   color: inherit;
 }
 
+.header {
+  padding: 10px 0;
+  background-color: #000;
+}
+
 .navigation {
-  position: fixed;
-  top: 0;
-  right: 0;left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 50px;
