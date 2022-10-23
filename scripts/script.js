@@ -1,3 +1,26 @@
+const scrollController = {
+  scrollPosition: 0,
+  disabledScroll() {
+    scrollController.scrollPosition = window.scrollY;
+    document.body.style.cssText = `
+      overflow: hidden;
+      position: fixed;
+      top: -${scrollController.scrollPosition}px;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      padding-right: ${window.innerWidth - document.body.offsetWidth}px
+    `;
+    document.documentElement.style.scrollBehavior = 'unset';
+  },
+  enabledScroll() {
+    document.body.style.cssText = '';
+    window.scroll({top: scrollController.scrollPosition})
+    document.documentElement.style.scrollBehavior = '';
+  },
+}
+
+
 const modalController = ({modal, btnOpen, btnClose, time = 300}) => {
   const buttonElems = document.querySelectorAll(btnOpen);
   const modalElem = document.querySelector(modal);
@@ -22,6 +45,7 @@ const modalController = ({modal, btnOpen, btnClose, time = 300}) => {
 
       setTimeout(() => {
         modalElem.style.visibility = 'hidden';
+        scrollController.enabledScroll();
       }, time);
 
       window.removeEventListener('keydown', closeModal);
@@ -31,7 +55,8 @@ const modalController = ({modal, btnOpen, btnClose, time = 300}) => {
   const openModal = () => {
     modalElem.style.visibility = 'visible';
     modalElem.style.opacity = 1;
-    window.addEventListener('keydown', closeModal)
+    window.addEventListener('keydown', closeModal);
+    scrollController.disabledScroll();
   };
 
   buttonElems.forEach(btn => {
